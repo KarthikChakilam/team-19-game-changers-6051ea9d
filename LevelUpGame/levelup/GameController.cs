@@ -1,14 +1,17 @@
+using System.Drawing;
 namespace levelup
 {
     public class GameController
     {
         // TODO: Is this what you want your default character name to be?git c
         public readonly string DEFAULT_CHARACTER_NAME = "Character";
+         public readonly string DEFAULT_PLAYER_NAME = "Player1";
         public readonly string myName= "Quincy";
 
         public record struct GameStatus(
             // TODO: Add other status data
-            String playerName,
+            string characterName,
+            string playerName,
             Point currentPosition
         );
 
@@ -22,6 +25,7 @@ namespace levelup
 
         public GameController()
         {
+            status.characterName=DEFAULT_CHARACTER_NAME;
             status.playerName = DEFAULT_PLAYER_NAME;
             //set current position to a nonsense place
             status.currentPosition = new Point(-1,-1);
@@ -57,7 +61,10 @@ namespace levelup
             //TODO: Implement move - should call something on another class
             //TODO: Should probably also update the game status
         }
-
+        public void SetCharacterPosition(Point coordinates)
+        {
+            //TODO
+        }
 
 
 

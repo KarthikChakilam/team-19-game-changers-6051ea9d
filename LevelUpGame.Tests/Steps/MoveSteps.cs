@@ -1,4 +1,25 @@
-GameController testObj = new GameController();
+using TechTalk.SpecFlow;
+using System;
+using NUnit.Framework;
+using FluentAssertions;
+using levelup;
+using System.Drawing;
+
+namespace DotNetExample.Tests.Steps
+{
+[Binding]
+    public class MoveSteps
+    {
+         private GameController testObj = new GameController();
+
+        private String characterName = "";
+
+        //public GameSteps(ScenarioContext scenarioContext)
+        //{
+            //   _scenarioContext = scenarioContext;
+        //}
+
+    //GameController testObj = new GameController();
     int startX, startY, endX, endY;
     GameController.DIRECTION direction;
     Point currentPosition;
@@ -21,8 +42,22 @@ GameController testObj = new GameController();
     }
     public void whenTheCharacterMoves()
     {
-        testObj.SetCharacterPosition(new Point(this.startX, this.StartY));
+        testObj.SetCharacterPosition(new Point(this.startX, this.startY));
         testObj.Move(this.direction);
         GameController.GameStatus status = testObj.GetStatus();
         this.currentPosition = status.currentPosition;
     }
+    [Then(@"the character is now at position with XCoordinates (.*)")]
+    public void checkXCoordinates(int endX)
+    {
+        Assert.NotNull(this.currentPosition, "Expected position not null" );
+        Assert.AreEqual(endX, this.currentPosition.X);
+    }
+    [Then(@"YCoordinates (.*)")]
+    public void checkYCoordinates(int endY)
+    {
+        Assert.NotNull(this.currentPosition, "Expected position not null");
+        Assert.AreEqual(endY, this.currentPosition.Y);
+    }
+    }
+}
