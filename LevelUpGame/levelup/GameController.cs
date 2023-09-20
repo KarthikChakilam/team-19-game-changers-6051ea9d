@@ -3,7 +3,7 @@ namespace levelup
     public class GameController
     {
         // TODO: Is this what you want your default character name to be?
-        public readonly string DEFAULT_CHARACTER_NAME = "Character";
+        public readonly string DEFAULT_CHARACTER_NAME = "Bob";
 
         public record struct GameStatus(
             // TODO: Add other status data
