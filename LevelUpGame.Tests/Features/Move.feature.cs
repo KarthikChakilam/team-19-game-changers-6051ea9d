@@ -35,7 +35,7 @@ namespace LevelUpGame.Test.Features
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Move in a direction", "    I want to move my character. If they attempt to move past a boundary, the mov" +
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Move in a direction", " ![Gamer](./office-moving-icon1.png)\n   I want to move my character. If they attempt to move past a boundary, the mov" +
                     "e results in no change in position.", ProgrammingLanguage.CSharp, featureTags);
             testRunner.OnFeatureStart(featureInfo);
         }
