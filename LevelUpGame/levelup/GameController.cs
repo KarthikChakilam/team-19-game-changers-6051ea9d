@@ -8,7 +8,8 @@ namespace levelup
 
         public record struct GameStatus(
             // TODO: Add other status data
-            String characterName
+            String playerName,
+            Point currentPosition
         );
 
         // TODO: Ensure this AND CLI commands match domain model
@@ -21,7 +22,9 @@ namespace levelup
 
         public GameController()
         {
-            status.characterName = DEFAULT_CHARACTER_NAME;
+            status.playerName = DEFAULT_PLAYER_NAME;
+            //set current position to a nonsense place
+            status.currentPosition = new Point(-1,-1);
         }
 
         // Pre-implemented to demonstrate ATDD
