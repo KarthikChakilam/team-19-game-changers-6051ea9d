@@ -4,6 +4,7 @@ namespace levelup
     {
         // TODO: Is this what you want your default character name to be?git c
         public readonly string DEFAULT_CHARACTER_NAME = "Character";
+        public readonly string myName= "Quincy";
 
         public record struct GameStatus(
             // TODO: Add other status data
