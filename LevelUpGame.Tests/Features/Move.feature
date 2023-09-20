@@ -1,4 +1,5 @@
 Feature: Move in a direction
+![Gamer](./office-moving-icon1.png)
     I want to move my character. If they attempt to move past a boundary, the move results in no change in position.
     @acceptance
     Scenario Outline: Move in a direction
