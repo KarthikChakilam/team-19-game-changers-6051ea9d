@@ -30,7 +30,7 @@ class Game
 
         while (!isGameStarted)
         {
-            var type = Prompt.Select<startingMenuCommands>("Choose game command:");
+            var type = Prompt.Select<startingMenuCommands>("Choose game commands:");
 
             switch (type)
             {
