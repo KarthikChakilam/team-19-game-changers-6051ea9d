@@ -22,7 +22,7 @@ namespace levelup
 
             Assert.IsNotNull(expected);
 
-            //Assert.IsNotNull(testObj.GetStatus());
+            Assert.IsNotNull(testObj.GetStatus());
             
         }
 
@@ -31,6 +31,9 @@ namespace levelup
         {
             var expected = "Mr. White";
             var result = "Mr. White";
+           
+            testObj.CreateCharacter("Mr. White");
+            Assert.IsTrue(true);
 
             Assert.AreEqual(expected,result);
         }
