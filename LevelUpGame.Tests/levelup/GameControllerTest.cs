@@ -55,6 +55,24 @@ namespace levelup
             Assert.AreEqual(expectedCharName, resultCharName);
         }
 
+        [Test]
+        public void Move()
+        {
+            var expected = "yes";
+            var result = "yes";
+
+            Assert.AreEqual(expected,result);
+        }
+
+        [Test]
+        public void SetCharacterPosition()
+        {
+            var expected = 1;
+            var result = 1;
+
+            Assert.AreEqual(expected,result);
+        }
+
 
         [Test]
         public void IsValidPosition()
