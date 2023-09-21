@@ -21,7 +21,7 @@ namespace DotNetExample.Tests.Steps
 
     //GameController testObj = new GameController();
     int startX, startY, endX, endY;
-    GameController.DIRECTION direction;
+    Enums.DIRECTION direction;
     Point currentPosition;
     [Given(@"the character starts at position with XCoordinates (.*)")]
     public void givenTheCharacterStartsAtX(int startX)
@@ -37,8 +37,8 @@ namespace DotNetExample.Tests.Steps
     [Given(@"the player chooses to move in (.*)")]
     public void givenPlayerChoosesDirection(String direction)
     {
-        this.direction = (GameController.DIRECTION)
-    Enum.Parse(typeof(GameController.DIRECTION) , direction);
+        this.direction = (Enums.DIRECTION)
+    Enum.Parse(typeof(Enums.DIRECTION) , direction);
     }
     public void whenTheCharacterMoves()
     {

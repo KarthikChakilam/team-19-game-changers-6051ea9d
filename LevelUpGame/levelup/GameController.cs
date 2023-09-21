@@ -1,4 +1,5 @@
 using System.Drawing;
+//using Enums;
 namespace levelup
 {
     public class GameController
@@ -16,13 +17,11 @@ namespace levelup
         );
 
         // TODO: Ensure this AND CLI commands match domain model
-        public enum DIRECTION
-        {
-            NORTH, SOUTH, EAST, WEST
-        }
+       
 
         GameStatus status = new GameStatus();
-
+        Player player= new Player();
+        
         public GameController()
         {
             status.characterName=DEFAULT_CHARACTER_NAME;
@@ -49,21 +48,41 @@ namespace levelup
             // TODO: Implement startGame - Should probably create positions and put the character
             // on them?
             // TODO: Should also update the game status?
+            SetInitialPosition();
+            Console.WriteLine("Game Started"); //TODO Customize 
         }
 
+        public void SetInitialPosition()
+        {
+            var position = new Position { X = 0, Y = 0 };
+        }
+
+// TODO : Move this to Show Summary instead of struct status 
         public GameStatus GetStatus()
         {
             return this.status;
         }
 
-        public void Move(DIRECTION directionToMove)
+        public void Move(Enums.DIRECTION directionToMove)
         {
+
             //TODO: Implement move - should call something on another class
             //TODO: Should probably also update the game status
+            var position=new Position();
+            if(directionToMove==Enums.DIRECTION.NORTH)
+            {
+                 if (position.Y > 0)
+                    {
+                        position.Y--;
+                        player.MoveCount++;
+                    }
+                    
+            }
         }
         public void SetCharacterPosition(Point coordinates)
         {
             //TODO
+
         }
 
 

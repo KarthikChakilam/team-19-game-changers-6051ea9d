@@ -1,49 +1,34 @@
 using Sharprompt;
 using System.Collections;
+
 namespace levelup.cli;
-class Game
+public class Game
 {
     static GameController gameController = new GameController();
     static List<GameController.GameStatus> gameHistory = new List<GameController.GameStatus>();
     static Boolean isGameStarted = false;
 
-    public enum startingMenuCommands
-    {
-        Help,
-        CreateCharacter,
-        StartGame,
-        Exit
-    }
-
-    public enum inGameCommands
-    {
-        Help,
-        North,
-        South,
-        East,
-        West,
-        Exit
-    }
+   
     static void Main(string[] args)
     {
         printWelcomeMessage();
 
         while (!isGameStarted)
         {
-            var type = Prompt.Select<startingMenuCommands>("Choose game commands:");
+            var type = Prompt.Select<Enums.startingMenuCommands>("Choose game commands:");
 
             switch (type)
             {
-                case startingMenuCommands.Help:
+                case Enums.startingMenuCommands.Help:
                     Help();
                     break;
-                case startingMenuCommands.CreateCharacter:
+                case Enums.startingMenuCommands.CreateCharacter:
                     CreateCharacter();
                     break;
-                case startingMenuCommands.Exit:
+                case Enums.startingMenuCommands.Exit:
                     EndGame();
                     break;
-                case startingMenuCommands.StartGame:
+                case Enums.startingMenuCommands.StartGame:
                     StartGame();
                     break;
                 default:
@@ -53,26 +38,26 @@ class Game
 
         while (true)
         {
-            var type = Prompt.Select<inGameCommands>("Choose game command:");
+            var type = Prompt.Select<Enums.inGameCommands>("Choose game command:");
 
             switch (type)
             {
-                case inGameCommands.Help:
+                case Enums.inGameCommands.Help:
                     Help();
                     break;
-                case inGameCommands.Exit:
+                case Enums.inGameCommands.Exit:
                     EndGame();
                     break;
-                case inGameCommands.North:
+                case Enums.inGameCommands.North:
                     MoveNorth();
                     break;
-                case inGameCommands.South:
+                case Enums.inGameCommands.South:
                     MoveSouth();
                     break;
-                case inGameCommands.East:
+                case Enums.inGameCommands.East:
                     MoveEast();
                     break;
-                case inGameCommands.West:
+                case Enums.inGameCommands.West:
                     MoveWest();
                     break;
                 default:
@@ -121,23 +106,23 @@ class Game
     }
     static void MoveNorth()
     {
-        gameController.Move(GameController.DIRECTION.NORTH);
+        gameController.Move(Enums.DIRECTION.NORTH);
         updateStatus(gameController.GetStatus());
     }
     static void MoveSouth()
     {
-        gameController.Move(GameController.DIRECTION.SOUTH);
+        gameController.Move(Enums.DIRECTION.SOUTH);
         updateStatus(gameController.GetStatus());
     }
     static void MoveEast()
     {
-        gameController.Move(GameController.DIRECTION.EAST);
+        gameController.Move(Enums.DIRECTION.EAST);
         updateStatus(gameController.GetStatus());
     }
 
     static void MoveWest()
     {
-        gameController.Move(GameController.DIRECTION.WEST);
+        gameController.Move(Enums.DIRECTION.WEST);
         updateStatus(gameController.GetStatus());
     }
 
