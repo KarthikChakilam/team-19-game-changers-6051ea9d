@@ -1,4 +1,5 @@
 using System.Drawing;
+//using System.Console;
 //using Enums;
 namespace levelup
 {
@@ -13,7 +14,7 @@ namespace levelup
             // TODO: Add other status data
             string characterName,
             string playerName,
-            Point currentPosition
+            Point currentPosition  
         );
 
         // TODO: Ensure this AND CLI commands match domain model
@@ -21,6 +22,7 @@ namespace levelup
 
         GameStatus status = new GameStatus();
         Player player= new Player();
+        Position playerPosition= new Position();
         
         public GameController()
         {
@@ -28,6 +30,7 @@ namespace levelup
             status.playerName = DEFAULT_PLAYER_NAME;
             //set current position to a nonsense place
             status.currentPosition = new Point(-1,-1);
+             playerPosition = new Position { X = 0, Y = 0 };
         }
 
         // Pre-implemented to demonstrate ATDD
@@ -54,7 +57,8 @@ namespace levelup
 
         public void SetInitialPosition()
         {
-            var position = new Position { X = 0, Y = 0 };
+            //var position = new Position { X = 0, Y = 0 };
+            status.currentPosition=new Point(0,0);
         }
 
 // TODO : Move this to Show Summary instead of struct status 
@@ -68,21 +72,83 @@ namespace levelup
 
             //TODO: Implement move - should call something on another class
             //TODO: Should probably also update the game status
-            var position=new Position();
+            //var position=new Position();
             if(directionToMove==Enums.DIRECTION.NORTH)
             {
-                 if (position.Y > 0)
+                //position.Y++;
+                 if (playerPosition.Y > 0)
                     {
-                        position.Y--;
+                        playerPosition.Y++;
                         player.MoveCount++;
                     }
-                    
+                else
+                {
+                    playerPosition.Y=playerPosition.Y++;
+                    player.MoveCount++;
+                }
+                status.currentPosition=new Point(playerPosition.X,playerPosition.Y);
+                Console.WriteLine(status.currentPosition.X + "is for X and" + status.currentPosition.Y+ "is for Y");
+                Console.WriteLine("I have moved North");
+                SetCharacterPosition(playerPosition);
+            }
+            if(directionToMove==Enums.DIRECTION.SOUTH)
+            {
+                 if (playerPosition.Y < 10 && playerPosition.Y>0)
+                    {
+                        playerPosition.Y--;
+                        player.MoveCount++;
+                    }
+                else
+                {
+                    playerPosition.Y=playerPosition.Y;
+                    player.MoveCount++;
+                }
+                status.currentPosition=new Point(playerPosition.X,playerPosition.Y);
+                 Console.WriteLine(status.currentPosition.X + "is for X and" + status.currentPosition.Y+ "is for Y");
+            }
+             if(directionToMove==Enums.DIRECTION.WEST)
+            {
+                 if (playerPosition.X>0)
+                    {
+                        playerPosition.X--;
+                        player.MoveCount++;
+                    }
+                else
+                {
+                    playerPosition.X=playerPosition.X;
+                    player.MoveCount++;
+                }
+                status.currentPosition=new Point(playerPosition.X,playerPosition.Y);
+                 Console.WriteLine(status.currentPosition.X + "is for X and" + status.currentPosition.Y+ "is for Y");
+            }
+            if(directionToMove==Enums.DIRECTION.EAST)
+            {
+                 if (playerPosition.X<10)
+                    {
+                        playerPosition.X++;
+                        player.MoveCount++;
+                    }
+                else
+                {
+                    playerPosition.X=playerPosition.X;
+                    player.MoveCount++;
+                }
+                status.currentPosition=new Point(playerPosition.X,playerPosition.Y);
+                 Console.WriteLine(status.currentPosition.X + "is for X and" + status.currentPosition.Y+ "is for Y");
             }
         }
-        public void SetCharacterPosition(Point coordinates)
+        public void SetCharacterPosition(Position coordinates)
         {
             //TODO
-
+           //Console.SetCursorPosition(coordinates.X,coordinates.Y);
+           //new Point(0,1);
+            playerPosition.X=coordinates.X;
+            playerPosition.Y=coordinates.Y;
+           //var newPosition= new Position();
+           //newPosition.X=coordinates.X;
+           //newPosition.Y=coordinates.Y;
+           Console.WriteLine("X" + coordinates.X +"And Y is" + coordinates.Y + "is my new position");
+           //return newPosition;
         }
 
 
