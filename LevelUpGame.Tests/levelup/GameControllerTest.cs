@@ -1,4 +1,5 @@
 using NUnit.Framework;
+using System.Drawing;
 using levelup;
 
 namespace levelup
@@ -53,7 +54,6 @@ namespace levelup
 
             var resultName ="Lamsal";
             var resultCharName ="Mr.White";
-
             Assert.AreEqual(expectedName, resultName);
             Assert.AreEqual(expectedCharName, resultCharName);
         }
